@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animal Shelter</title>
+  <link rel='stylesheet' href='/stylesheets/main1.css'>
+</head>
+<body>
+  <header>
+    <img src="http://diysolarpanelsv.com/images/paws-and-claws-clipart-22.png" alt="">
+    <h1>PAWS AND CLAWS</h1>
+    <img class="image_flip" src="http://diysolarpanelsv.com/images/paws-and-claws-clipart-22.png" alt="">
+  </header>
+  <div class="logBTNS">
+    <!-- <% if !logged_in? %>
+      <a href="/login">Login</a>
+      <form class="login" action="/login" method="get">
+        <button type="submit" >Login</button>
+      </form>
+    <% end %> -->
+    <% if logged_in? %>
+      <form class="" action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button class="" type="submit" >Logout</button>
+      </form>
+    <% end %>
+  </div>
+  <nav>
+    <% if logged_in? %>
+      <a href="/animals">Display Animals</a>
+      <a href="/clients">Display Clients</a>
+      <!-- <a href="/adopt_animal">Adopt an Animal</a>
+      <a href="/return_animal">Return an Animal</a> -->
+      <!-- <%# if logged_in? && User.find(session[:user_id]).admin == 'tdrue' %> -->
+      <% if logged_in? && admin? %>
+      <div class="dropdown">
+        <a href="#" class="dsropbtn">Maintenance &#9660</a>
+        <div class="dropdown-content">
+          <a href="/animals_maintenance">Animals</a>
+          <a href="/clients_maintenance">Clients</a>
+          <a href="/shelters_maintenance">Shelters</a>
+          <a href="/users_maintenance">Users</a>
+          <a href="/user_access_maintenance">User Access</a>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </nav>
+
+  <%= yield %>
+
+</body>
+</html>

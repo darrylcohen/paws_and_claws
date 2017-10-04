@@ -1,0 +1,35 @@
+<div class="maintenance_heading">
+  <h1>New User Access</h1>
+  <a href="/user/new">New User</a>
+  <p> <%= @message %></p>
+</div>
+
+
+<div class="formContainer">
+
+  <form class="" action="/user_access" method="post">
+    <div class="formDetails">
+      <label for="user">User</label>
+      <select class="" name="user_id">
+        <% @users.each do |user| %>
+          <option value="<%= user.id %>"><%= user.name %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="formDetails">
+      <label for="shelter">Shelter</label>
+      <select class="" name="shelter_id">
+        <% @shelters.each do |shelter| %>
+          <option value="<%= shelter.id %>"><%= shelter.name %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="formDetails">
+      <button type="submit" >Submit</button>
+    </div>
+  </form>
+  <a class="go_back" href="<%= request.referer %>">Go back</a>
+
+</div>

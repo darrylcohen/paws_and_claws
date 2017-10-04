@@ -1,0 +1,35 @@
+
+<h1><%= @message %> </h1>
+<!-- <ul> -->
+  <div class="display_container">
+    <% @clients.each do |client| %>
+    <!-- <li> -->
+      <div class="display_item">
+        <p class="display_item_name"><%= client.name %> </p>
+        <img src="<%= client.pic_image %> " alt="">
+        <p class="display_item_name"><%= "Phone: #{client.phone}, <br>Email: #{client.email}" %> </p>
+        <nav>
+          <!-- <p class="display_item_name">Pets -->
+            <a href="/adopt_animal/<%= client.id %>">Adopt A Pet</a>
+          <!-- </p> -->
+        </nav>
+        <p class="display_item_name">Pets</p>
+        <div class="display_container">
+          <% if !client.animals.empty? %>
+            <% client.animals.each do |pet| %>
+              <div class="display_item">
+                <p class="display_item_name_small"><%= pet.name %></p>
+                <img class="img_small" src="<%= pet.pic_image %>" alt="">
+                <nav>
+                  <a href="/return_animal/<%= pet.id %>">Return</a>
+                </nav>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+  <!-- </li> -->
+    <% end %>
+  </div>
+
+<!-- </ul> -->

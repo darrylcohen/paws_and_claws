@@ -1,0 +1,32 @@
+
+
+<div class="maintenance_heading">
+  <h2>User Maintenance</h2>
+  <a href="/user/new">New User</a>
+  <p> <%= @message %></p>
+</div>
+
+<h1><%= @message %> </h1>
+<!-- <ul> -->
+<div class="display_container">
+  <% @users.each do |user| %>
+  <!-- <li> -->
+    <div class="display_item">
+      <p class="display_item_name"><%= user.name %> </p>
+      <p class="display_item_name"><%= "Email: #{user.email},    Admin: #{user.admin}" %> </p>
+      <div class="crud_btns">
+        <form class="" action="/user/<%= user.id %>/edit" method="get">
+          <button type="submit" >Edit</button>
+        </form>
+        <form class="" action="/user/<%= user.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" >Delete</button>
+        </form>
+        <!-- <form class="" action="/user/<%#= user.id %>" method="get">
+          <button type="submit" >View</button>
+        </form> -->
+      </div>
+    </div>
+<!-- </li> -->
+  <% end %>
+</div>

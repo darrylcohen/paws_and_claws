@@ -1,0 +1,33 @@
+
+<div class="maintenance_heading">
+  <h2>Animal Maintenance</h2>
+  <a href="/animal/new">New Animal</a>
+</div>
+
+<h1><%= @message %> </h1>
+<!-- <ul> -->
+  <div class="display_container">
+    <% @animals.each do |animal| %>
+    <!-- <li> -->
+      <div class="display_item">
+        <p class="display_item_name"><%= animal.name %> </p>
+        <img src="<%= animal.pic_image %> " alt="">
+        <p class="display_item_name"><%= "Age: #{animal.age}, Species: #{animal.species}" %> </p>
+        <div class="crud_btns">
+          <form class="" action="/animal/<%= animal.id %>/edit" method="get">
+            <button type="submit" >Edit</button>
+          </form>
+          <form class="" action="/animal/<%= animal.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" >Delete</button>
+          </form>
+          <!-- <form class="" action="/animal/<%#= animal.id %>" method="get">
+            <button type="submit" >View</button>
+          </form> -->
+        </div>
+      </div>
+  <!-- </li> -->
+    <% end %>
+  </div>
+
+<!-- </ul> -->

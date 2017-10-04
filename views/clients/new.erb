@@ -1,0 +1,41 @@
+<div class="formContainer">
+  <h1>New Client</h1>
+
+  <form class="" action="/client" method="post">
+    <div class="formDetails">
+      <label for="name">Name</label>
+      <input type="text" name="name" value="">
+    </div>
+
+    <div class="formDetails">
+      <label for="pic_image">Picture</label>
+      <textarea name="pic_image" rows="8" cols="40"></textarea>
+      <!-- <input type="text" name="pic_image" ></input> -->
+    </div>
+
+    <div class="formDetails">
+      <label for="phone">Phone</label>
+      <input type="text" name="phone" value="">
+    </div>
+
+    <div class="formDetails">
+      <label for="email">Email</label>
+      <input type="text" name="email" value="">
+    </div>
+
+    <div class="formDetails">
+      <label for="shelter_id">Shelter</label>
+      <select class="" name="shelter_id">
+        <% @shelters.each do |shelter| %>
+          <option value="<%= shelter.id %>"><%= shelter.name %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="formDetails">
+      <button type="submit" >Submit</button>
+    </div>
+  </form>
+  <a class="go_back" href="<%= request.referer %>">Go back</a>
+
+</div>

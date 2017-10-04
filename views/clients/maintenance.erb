@@ -1,0 +1,31 @@
+
+<div class="maintenance_heading">
+  <h2>Client Maintenance</h2>
+  <a href="/client/new">New Client</a>
+</div>
+
+<h1><%= @message %> </h1>
+<!-- <ul> -->
+  <div class="display_container">
+    <% @clients.each do |client| %>
+    <!-- <li> -->
+      <div class="display_item">
+        <p class="display_item_name"><%= client.name %> </p>
+        <img src="<%= client.pic_image %> " alt="">
+        <p class="display_item_name"><%= "Phone: #{client.phone}, <br>Email: #{client.email}" %> </p>
+        <div class="crud_btns">
+          <form class="" action="/client/<%= client.id %>/edit" method="get">
+            <button type="submit" >Edit</button>
+          </form>
+          <form class="" action="/client/<%= client.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" >Delete</button>
+          </form>
+          <!-- <form class="" action="/animal/<%#= animal.id %>" method="get">
+            <button type="submit" >View</button>
+          </form> -->
+        </div>
+      </div>
+  <!-- </li> -->
+    <% end %>
+  </div>

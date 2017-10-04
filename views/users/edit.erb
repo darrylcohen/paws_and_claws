@@ -1,0 +1,27 @@
+
+<div class="maintenance_heading">
+  <h1>Editing User</h1>
+</div>
+
+<div class="formContainer">
+  <form class="" action="/user/<%= @user.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class="formDetails"
+      <label for="name">Name</label>
+      <input type="text" name="name" value="<%= @user.name %>">
+    </div>
+    <div class="formDetails"
+      <label for="email">Email</label>
+      <input type="text" name="email" value="<%= @user.email %>">
+    </div>
+    <div class="formDetails"
+      <label for="admin">Admin</label>
+      <input type="text" name="admin" value="<%= @user.admin %>">
+    </div>
+    <div class="formDetails">
+      <button type="submit" >Submit</button>
+    </div>
+    <a class="go_back" href="<%= request.referer %>">Go back</a>
+
+  </form>
+</div>

@@ -1,0 +1,29 @@
+
+<div class="maintenance_heading">
+  <h2>User Access Maintenance</h2>
+  <a href="/user_access/new">New User Access</a>
+  <p> <%= @message %></p>
+</div>
+
+<div class="display_container">
+  <% @users_access.each do |user_access| %>
+  <!-- <li> -->
+    <div class="display_item">
+      <p class="display_item_name"><%= user_access.user.name %> </p>
+      <p class="display_item_name"><%= "Shelter: #{user_access.shelter.name}" %> </p>
+      <div class="crud_btns">
+        <form class="" action="/user_access/<%= user_access.id %>/edit" method="get">
+          <button type="submit" >Edit</button>
+        </form>
+        <form class="" action="/user_access/<%= user_access.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" >Delete</button>
+        </form>
+        <!-- <form class="" action="/user_access/<%#= user_access.id %>" method="get">
+          <button type="submit" >View</button>
+        </form> -->
+      </div>
+    </div>
+<!-- </li> -->
+  <% end %>
+</div>

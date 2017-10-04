@@ -1,0 +1,36 @@
+
+
+
+<div class="maintenance_heading">
+  <h1>Editing User Access</h1>
+</div>
+
+<div class="formContainer">
+  <form class="" action="/user_access/<%= @user_access.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
+
+    <div class="formDetails"
+      <label for="name">Name</label>
+      <input type="hidden" name="user_id" value="<%= @user.id %>">
+      <p > <%= @user.name %></p>
+    </div>
+
+    <div class="formDetails"
+      <label for="shelter">Shelter</label>
+      <select class="" name="shelter_id">
+        <% @shelters.each do |shelter| %>
+          <% if @user_access.shelter_id == shelter.id %>
+            <option value="<%= shelter.id %>" selected ><%= shelter.name %></option>
+          <% else %>
+            <option value="<%= shelter.id %>" ><%= shelter.name %></option>
+          <% end %>
+        <% end %>
+      </select>
+    </div>
+    <div class="formDetails">
+      <button type="submit" >Submit</button>
+    </div>
+    <a class="go_back" href="<%= request.referer %>">Go back</a>
+
+  </form>
+</div>

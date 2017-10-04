@@ -1,0 +1,30 @@
+<div class="formContainer">
+  <form class="" action="/session" method="post">
+    <div class="formDetails"
+      <label for="email">Email</label>
+      <input type="text" name="email" value="">
+    </div>
+    <div class="formDetails"
+      <label for="password">Password</label>
+      <input type="password" name="password" value="">
+    </div>
+    <div class="formDetails">
+      <label for="shelter">Shelter</label>
+      <select  name="shelter_id">
+        <% @shelters.each do |shelter| %>
+          <option value=" <%= shelter.id %> "><%= shelter.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="formDetails">
+      <button type="submit" >Login</button>
+    </div>
+    <div class="formDetails">
+      <p> <%= @message %> </p>
+    </div>
+
+  </form>
+
+
+
+</div>

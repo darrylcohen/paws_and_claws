@@ -1,0 +1,38 @@
+<div class="maintenance_heading">
+  <h1>Editing Animal</h1>
+</div>
+
+<div class="formContainer">
+  <form class="" action="/animal/<%= @animal.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class="formDetails"
+      <label for="name">Name</label>
+      <input type="text" name="name" value="<%= @animal.name %>">
+    </div>
+    <div class="formDetails"
+      <label for="pic_image">Picture</label>
+      <textarea name="pic_image" rows="5" cols="40"><%= @animal.pic_image %></textarea>
+    </div>
+    <div class="formDetails"
+      <label for="age">Age</label>
+      <input type="text" name="age" value="<%= @animal.age %>">
+    </div>
+    <div class="formDetails"
+      <label for="species">Species</label>
+      <input type="text" name="species" value="<%= @animal.species %>">
+    </div>
+    <div class="formDetails">
+      <label for="shelter_id">Shelter</label>
+      <select class="" name="shelter_id">
+        <% @shelters.each do |shelter| %>
+          <option value="<%= shelter.id %>"><%= shelter.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="formDetails">
+      <button type="submit" >Submit</button>
+    </div>
+    <a class="go_back" href="<%= request.referer %>">Go back</a>
+
+  </form>
+</div>

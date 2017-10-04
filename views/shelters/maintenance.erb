@@ -1,0 +1,31 @@
+
+<div class="maintenance_heading">
+  <h2>Shelter Maintenance</h2>
+  <a href="/shelter/new">New Shelter</a>
+  <p> <%= @message %></p>
+</div>
+
+<h1><%= @message %> </h1>
+<!-- <ul> -->
+<div class="display_container">
+  <% @shelters.each do |shelter| %>
+  <!-- <li> -->
+    <div class="display_item">
+      <p class="display_item_name"><%= shelter.name %> </p>
+      <p class="display_item_name"><%= "Address: #{shelter.address}, Phone: #{shelter.phone}" %> </p>
+      <div class="crud_btns">
+        <form class="" action="/shelter/<%= shelter.id %>/edit" method="get">
+          <button type="submit" >Edit</button>
+        </form>
+        <form class="" action="/shelter/<%= shelter.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" >Delete</button>
+        </form>
+        <!-- <form class="" action="/shelter/<%#= shelter.id %>" method="get">
+          <button type="submit" >View</button>
+        </form> -->
+      </div>
+    </div>
+<!-- </li> -->
+  <% end %>
+</div>

@@ -1,0 +1,21 @@
+<h1>"NOT SUJPPOSED TO BE HERE "</h1>
+<!-- <ul> -->
+  <div class="display_container">
+    <% @animals.each do |animal| %>
+    <!-- <li> -->
+      <div class="display_item">
+        <p class="display_item_name"><%= animal.name %> </p>
+        <img src="<%= animal.pic_image %> " alt="">
+        <p class="display_item_name"><%= "Age: #{animal.age}, Species: #{animal.species}" %> </p>
+        <form class="" action="/adopt_an_animal" method="post">
+          <input type="hidden" name="animal_id" value="<%= animal.id %>">
+          <input type="hidden" name="client_id" value="<%= @client_id %>">
+          <button type="submit" >Adopt</button>
+        </form>
+      </div>
+    <!-- <a href="/animal/<%= animal.id %>"><%= animal.name %> </a> </li> -->
+  <!-- </li> -->
+    <% end %>
+
+  </div>
+  <a href="<%= request.referer %>">Go back</a>

@@ -1,0 +1,15 @@
+<h2><%= @client.name %></h2>
+<div class="mid_container">
+  <div class="col_left">
+    <img src="<%= @client.pic_image %>" alt="">
+  </div>
+  <div class="col_right">
+    <p> <%= @client.phone %> </p>
+    <p> <%= @client.email %> </p>
+    <p> <%= @shelter_name %> </p>
+  </div>
+</div>
+<form class="" action="/clients_maintenance" method="get">
+  <button type="submit">Go Back</button>
+
+</form>
