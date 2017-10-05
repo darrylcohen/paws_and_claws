@@ -1,6 +1,6 @@
 
 # PAWS & CLAWS
-### **Welcome to _DOTs and Boxes_**
+### **Welcome to Paws and Claws**
 
 <img src=https://ibin.co/3cmzkKHF72pf.jpg width="300">
 
