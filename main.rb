@@ -104,7 +104,11 @@ delete '/session' do
 end
 
 get '/adopt_animal/:id' do
-  @animals = Animal.where("shelter_id = ? AND client_id is null",  session[:shelter_id])
+  if admin?
+    @animals  = Animal.all
+  else
+    @animals = Animal.where("shelter_id = ? AND client_id is null",  session[:shelter_id]).order("name ASC" )
+  end
   @client_id = params[:id]
   erb :adopt_animal
 end
@@ -133,7 +137,8 @@ end
 get '/animals_maintenance' do
   # @animals = Animal.all
   # @animals = Animal.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
-  @animals = Animal.where("shelter_id = ? AND client_id is null",  session[:shelter_id]).order("name ASC" )
+  # @animals = Animal.where("shelter_id = ? AND client_id is null",  session[:shelter_id]).order("name ASC" )
+  @animals = Animal.all
   @shelters = Shelter.all
   store_route '/animals_maintenance'
   erb :'animals/maintenance'
@@ -141,8 +146,8 @@ end
 
 get '/clients_maintenance' do
   # @clients = Client.all
-  @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
-
+  # @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+  @clients = Client.all
   @shelters = Shelter.all
   store_route '/clients_maintenance'
 # 'sdfsdfsdfsdfsdf'

@@ -1,6 +1,11 @@
 get '/clients' do
   # @clients = Client.all
-  @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+  if admin?
+    @clients = Client.all
+  else
+    @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+  end
+  
   if @clients.empty?
     @message = 'No Clients to Display'
   end

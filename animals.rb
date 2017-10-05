@@ -1,7 +1,12 @@
 get '/animals' do
   # @animals = Animal.all
   # @animals = Animal.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+  if admin?
+    @animals = Animal.all
+  else
     @animals = Animal.where("shelter_id = ? AND client_id is null",  session[:shelter_id]).order("name ASC" )
+  end
+
   if @animals.empty?
     @message = 'No Animals to Display'
   end

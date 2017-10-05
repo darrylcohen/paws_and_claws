@@ -9,7 +9,7 @@
       <div class="display_item">
         <p class="display_item_name"><%= animal.name %> </p>
         <img src="<%= animal.pic_image %> " alt="">
-        <p class="display_item_name"><%= "Age: #{animal.age}, Species: #{animal.species}" %> </p>
+        <p class="display_item_name"><%= "Age: #{animal.age}, Species: #{animal.species}, #{Shelter.find(animal.shelter_id).name}" %> </p>
         <form class="" action="/adopt_an_animal" method="post">
           <input type="hidden" name="animal_id" value="<%= animal.id %>">
           <input type="hidden" name="client_id" value="<%= @client_id %>">

@@ -7,7 +7,7 @@
       <div class="display_item">
         <p class="display_item_name"><%= animal.name %> </p>
         <img src="<%= animal.pic_image %> " alt="">
-        <p class="display_item_name"><%= "Age: #{animal.age}, Species: #{animal.species}" %> </p>
+        <p class="display_item_name"><%= "Age: #{animal.age}, Species: #{animal.species}, #{Shelter.find(animal.shelter_id).name}" %> </p>
       </div>
     <!-- <a href="/animal/<%= animal.id %>"><%= animal.name %> </a> </li> -->
   <!-- </li> -->

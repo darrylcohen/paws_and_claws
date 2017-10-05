@@ -12,7 +12,7 @@
       <div class="display_item">
         <p class="display_item_name"><%= animal.name %> </p>
         <img src="<%= animal.pic_image %> " alt="">
-        <p class="display_item_name"><%= "Age: #{animal.age}, Species: #{animal.species}" %> </p>
+        <p class="display_item_name"><%= "Age: #{animal.age}, Species: #{animal.species}, #{Shelter.find(animal.shelter_id).name}" %> </p>
         <div class="crud_btns">
           <form class="" action="/animal/<%= animal.id %>/edit" method="get">
             <button type="submit" >Edit</button>

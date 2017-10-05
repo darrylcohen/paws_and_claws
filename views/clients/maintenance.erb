@@ -17,7 +17,7 @@
       <div class="display_item">
         <p class="display_item_name"><%= client.name %> </p>
         <img src="<%= client.pic_image %> " alt="">
-        <p class="display_item_name"><%= "Phone: #{client.phone}, <br>Email: #{client.email}" %> </p>
+        <p class="display_item_name"><%= "Phone: #{client.phone}, <br>Email: #{client.email}, #{Shelter.find(client.shelter_id).name}" %> </p>
         <div class="crud_btns">
           <form class="" action="/client/<%= client.id %>/edit" method="get">
             <button type="submit" >Edit</button>
