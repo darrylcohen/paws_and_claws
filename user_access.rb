@@ -18,7 +18,7 @@ post '/user_access' do
   # @shelters = Shelter.all
   @users_access = UserShelter.all
   @users = User.all
-  @shelters = Shelter.all
+  @shelters = Shelter.all.order("name ASC" )
 
   # erb :"user_access/maintenance"
   redirect "/user_access_maintenance"
