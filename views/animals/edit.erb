@@ -1,5 +1,6 @@
 <div class="maintenance_heading">
-  <h1>Editing Animal</h1>
+  <h2>Editing Animal</h2>
+  <p> <%= @message %></p>
 </div>
 
 <div class="formContainer">
@@ -25,14 +26,19 @@
       <label for="shelter_id">Shelter</label>
       <select class="" name="shelter_id">
         <% @shelters.each do |shelter| %>
-          <option value="<%= shelter.id %>"><%= shelter.name %></option>
+          <% if @animal.shelter_id == shelter.id %>
+            <option value="<%= shelter.id %>" selected><%= shelter.name %></option>
+          <% else %>
+            <option value="<%= shelter.id %>" ><%= shelter.name %></option>
+          <% end %>
+
         <% end %>
       </select>
     </div>
     <div class="formDetails">
       <button type="submit" >Submit</button>
+      <a class="go_back" href="<%= request.referer %>">Go back</a>
     </div>
-    <a class="go_back" href="<%= request.referer %>">Go back</a>
 
   </form>
 </div>

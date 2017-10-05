@@ -1,15 +1,17 @@
 get '/animals' do
   # @animals = Animal.all
-  @animals = Animal.where("shelter_id = ?",  session[:shelter_id] )
+  # @animals = Animal.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+    @animals = Animal.where("shelter_id = ? AND client_id is null",  session[:shelter_id]).order("name ASC" )
   if @animals.empty?
     @message = 'No Animals to Display'
   end
+  session[:previous_route] = '/animals'
   erb :'animals/animals'
 end
 
 #New
 get '/animal/new' do
-  @shelters = Shelter.all
+  @shelters = Shelter.all.order("name ASC" )
   erb :'animals/new'
 end
 

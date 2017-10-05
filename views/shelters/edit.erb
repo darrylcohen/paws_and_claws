@@ -1,7 +1,7 @@
 
-
 <div class="maintenance_heading">
-  <h1>Editing Shelter</h1>
+  <h2>Editing Shelter</h2>
+  <p> <%= @message %></p>
 </div>
 
 <div class="formContainer">
@@ -21,8 +21,8 @@
     </div>
     <div class="formDetails">
       <button type="submit" >Submit</button>
+      <a class="go_back" href="<%= request.referer %>">Go back</a>
     </div>
-    <a class="go_back" href="<%= request.referer %>">Go back</a>
 
   </form>
 </div>

@@ -1,5 +1,10 @@
+
+<div class="maintenance_heading">
+  <h2>New Client</h2>
+  <p> <%= @message %></p>
+</div>
+
 <div class="formContainer">
-  <h1>New Client</h1>
 
   <form class="" action="/client" method="post">
     <div class="formDetails">
@@ -34,8 +39,8 @@
 
     <div class="formDetails">
       <button type="submit" >Submit</button>
+      <a class="go_back" href="<%= request.referer %>">Go back</a>
     </div>
   </form>
-  <a class="go_back" href="<%= request.referer %>">Go back</a>
 
 </div>

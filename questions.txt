@@ -1,0 +1,1 @@
+1. When I delete a shelter it says it cant because foreign key violation. How to fix this.

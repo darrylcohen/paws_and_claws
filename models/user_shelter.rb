@@ -1,4 +1,4 @@
-class User_shelter < ActiveRecord::Base
+class UserShelter < ActiveRecord::Base
   belongs_to :user
   belongs_to :shelter
 

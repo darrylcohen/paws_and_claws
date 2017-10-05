@@ -9,7 +9,7 @@ post '/shelter' do
   shelter.address = params[:address]
   shelter.phone = params[:phone]
   shelter.save
-  redirect "shelters/maintenance"
+  redirect "/shelters_maintenance"
 
 end
 
@@ -39,6 +39,15 @@ end
 #DELETE
 delete '/shelter/:id' do
   shelter = Shelter.find(params[:id])
+  binding.pry
   shelter.destroy
-  redirect 'shelters_maintenance'
+  # redirect 'shelters_maintenance'
+  if !shelter.errors.full_messages.empty?
+    # @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+    @shelters = Shelter.all.order("name ASC" )
+    @message = shelter.errors.full_messages[0]
+    erb :'shelters/maintenance'
+  else
+    redirect '/shelters_maintenance'
+  end
 end

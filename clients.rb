@@ -2,8 +2,9 @@ get '/clients' do
   # @clients = Client.all
   @clients = Client.where("shelter_id = ?",  session[:shelter_id] )
   if @clients.empty?
-    @message = 'No Animals to Display'
+    @message = 'No Clients to Display'
   end
+  session[:previous_route] = '/clients'
 
   erb :'clients/clients'
 end
@@ -57,5 +58,12 @@ end
 delete '/client/:id' do
   client = Client.find(params[:id])
   client.destroy
-  redirect 'clients_maintenance'
+  if !client.errors.full_messages.empty?
+    @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+    @shelters = Shelter.all
+    @message = client.errors.full_messages[0]
+    erb :'clients/maintenance'
+  else
+    redirect '/clients_maintenance'
+  end
 end

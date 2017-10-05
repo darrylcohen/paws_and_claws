@@ -1,10 +1,15 @@
+<!--
+<div class="maintenance_heading">
+  <h2>Client Maintenance</h2>
+  <a href="/client/new">New Client</a>
+</div> -->
 
 <div class="maintenance_heading">
   <h2>Client Maintenance</h2>
   <a href="/client/new">New Client</a>
+  <p> <%= @message %></p>
 </div>
 
-<h1><%= @message %> </h1>
 <!-- <ul> -->
   <div class="display_container">
     <% @clients.each do |client| %>
@@ -24,6 +29,22 @@
           <!-- <form class="" action="/animal/<%#= animal.id %>" method="get">
             <button type="submit" >View</button>
           </form> -->
+        </div>
+        <p class="display_item_name">Pets</p>
+        <div class="display_container">
+          <% if !client.animals.empty? %>
+            <% client.animals.each do |pet| %>
+              <div class="display_item">
+                <p class="display_item_name_small"><%= pet.name %></p>
+                <img class="img_small" src="<%= pet.pic_image %>" alt="">
+                </div>
+            <% end %>
+          <% else %>
+            <div class="display_no_pet">
+              <img  src="https://baggybulldogs.files.wordpress.com/2012/08/adopt-a-pet.jpg" alt="">
+            </div>
+
+          <% end %>
         </div>
       </div>
   <!-- </li> -->

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Animal Shelter</title>
   <link rel='stylesheet' href='/stylesheets/main1.css'>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -11,7 +12,7 @@
     <h1>PAWS AND CLAWS</h1>
     <img class="image_flip" src="http://diysolarpanelsv.com/images/paws-and-claws-clipart-22.png" alt="">
   </header>
-  <div class="logBTNS">
+  <div class="log_details">
     <!-- <% if !logged_in? %>
       <a href="/login">Login</a>
       <form class="login" action="/login" method="get">
@@ -23,31 +24,48 @@
         <input type="hidden" name="_method" value="delete">
         <button class="" type="submit" >Logout</button>
       </form>
+      <!-- <p> <%#= "Shelter: #{Shelter.find(session[:shelter_id]).name}" %> </p> -->
     <% end %>
   </div>
   <nav>
     <% if logged_in? %>
       <a href="/animals">Display Animals</a>
       <a href="/clients">Display Clients</a>
-      <!-- <a href="/adopt_animal">Adopt an Animal</a>
-      <a href="/return_animal">Return an Animal</a> -->
-      <!-- <%# if logged_in? && User.find(session[:user_id]).admin == 'tdrue' %> -->
       <% if logged_in? && admin? %>
-      <div class="dropdown">
-        <a href="#" class="dsropbtn">Maintenance &#9660</a>
-        <div class="dropdown-content">
-          <a href="/animals_maintenance">Animals</a>
-          <a href="/clients_maintenance">Clients</a>
-          <a href="/shelters_maintenance">Shelters</a>
-          <a href="/users_maintenance">Users</a>
-          <a href="/user_access_maintenance">User Access</a>
+        <div class="dropdown">
+          <a href="#" class="dsropbtn">Maintenance &#9660</a>
+          <div class="dropdown-content">
+            <a href="/animals_maintenance">Animals</a>
+            <a href="/clients_maintenance">Clients</a>
+            <a href="/shelters_maintenance">Shelters</a>
+            <a href="/users_maintenance">Users</a>
+            <a href="/user_access_maintenance">User Access</a>
+          </div>
         </div>
-      </div>
+        <div class="shelters">
+          <form class="" action="/session_change" method="post">
+            <input type="hidden" name="_method" value="put">
+            <p> Shelter </p>
+            <select class="" name="shelter_id">
+              <% Shelter.all.each do |shelter| %>
+                <% if shelter.id == session[:shelter_id].to_i %>
+                  <option value="<%= shelter.id %>" selected><%= shelter.name %></option>
+                <% else %>
+                  <option value="<%= shelter.id %>" ><%= shelter.name %></option>
+                <% end %>
+              <% end %>
+            </select>
+            <button type="submit" name="button">Submit</button>
+          </form>
+        </div>
+
       <% end %>
     <% end %>
   </nav>
 
   <%= yield %>
-
+  <footer>
+    Darryl Cohen 2017 &#169
+  </footer>
 </body>
 </html>

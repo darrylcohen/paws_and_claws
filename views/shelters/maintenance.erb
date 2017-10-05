@@ -5,14 +5,13 @@
   <p> <%= @message %></p>
 </div>
 
-<h1><%= @message %> </h1>
 <!-- <ul> -->
 <div class="display_container">
   <% @shelters.each do |shelter| %>
   <!-- <li> -->
     <div class="display_item">
       <p class="display_item_name"><%= shelter.name %> </p>
-      <p class="display_item_name"><%= "Address: #{shelter.address}, Phone: #{shelter.phone}" %> </p>
+      <p class="display_item_name"><%= "Address: #{shelter.address}, <br> Phone: #{shelter.phone}" %> </p>
       <div class="crud_btns">
         <form class="" action="/shelter/<%= shelter.id %>/edit" method="get">
           <button type="submit" >Edit</button>

@@ -1,6 +1,7 @@
 
 <div class="maintenance_heading">
-  <h1>Editing Client</h1>
+  <h2>Editing Client</h2>
+  <p> <%= @message %></p>
 </div>
 
 <div class="formContainer">
@@ -12,28 +13,32 @@
     </div>
     <div class="formDetails"
       <label for="pic_image">Picture</label>
-      <textarea name="pic_image" rows="5" cols="40"><%= @client.pic_image %></textarea>
+      <textarea name="pic_image" ><%= @client.pic_image %></textarea>
     </div>
     <div class="formDetails"
       <label for="phone">Phone</label>
       <input type="text" name="phone" value="<%= @client.phone %>">
     </div>
     <div class="formDetails"
-      <label for="email"Email</label>
+      <label for="email">Email</label>
       <input type="text" name="email" value="<%= @client.email %>">
     </div>
     <div class="formDetails">
       <label for="shelter_id">Shelter</label>
       <select class="" name="shelter_id">
         <% @shelters.each do |shelter| %>
-          <option value="<%= shelter.id %>"><%= shelter.name %></option>
-        <% end %>
+          <% if @client.shelter_id == shelter.id %>
+            <option value="<%= shelter.id %>" selected><%= shelter.name %></option>
+          <% else %>
+            <option value="<%= shelter.id %>" ><%= shelter.name %></option>
+          <% end %>
+      <% end %>
       </select>
     </div>
     <div class="formDetails">
       <button type="submit" >Submit</button>
+      <a class="go_back" href="<%= request.referer %>">Go back</a>
     </div>
-    <a class="go_back" href="<%= request.referer %>">Go back</a>
 
   </form>
 </div>

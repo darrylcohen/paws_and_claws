@@ -1,8 +1,7 @@
 
-
-
 <div class="maintenance_heading">
-  <h1>Editing User Access</h1>
+  <h2>Editing User Access</h2>
+  <p> <%= @message %></p>
 </div>
 
 <div class="formContainer">
@@ -12,7 +11,7 @@
     <div class="formDetails"
       <label for="name">Name</label>
       <input type="hidden" name="user_id" value="<%= @user.id %>">
-      <p > <%= @user.name %></p>
+      <h3 > <%= @user.name %></h3>
     </div>
 
     <div class="formDetails"
@@ -29,8 +28,8 @@
     </div>
     <div class="formDetails">
       <button type="submit" >Submit</button>
+      <a class="go_back" href="<%= request.referer %>">Go back</a>
     </div>
-    <a class="go_back" href="<%= request.referer %>">Go back</a>
 
   </form>
 </div>

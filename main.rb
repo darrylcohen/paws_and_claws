@@ -1,6 +1,6 @@
 
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 # require_relative 'animal'
 # require_relative 'client'
 require 'pry'
@@ -39,7 +39,7 @@ helpers do
 end
 
 def user_access_unique? shelter_id, user_id
-  User_shelter.where(shelter_id: shelter_id, user_id: user_id).length > 0 ? false : true
+  UserShelter.where(shelter_id: shelter_id, user_id: user_id).length > 0 ? false : true
 end
 
 get '/' do
@@ -51,13 +51,18 @@ get '/login' do
   erb :login
 end
 
+get '/index' do
+  session[:previous_route] = '/index'
+  erb :index
+end
+
 post '/session' do
   # find user
   user = User.find_by(email: params[:email])
 
   # succesful create session then redirect
   if user && user.authenticate(params[:password])
-    valid_user = User_shelter.where(shelter_id: params[:shelter_id], user_id: user.id)
+    valid_user = UserShelter.where(shelter_id: params[:shelter_id], user_id: user.id)
     if valid_user.length == 0
       @message = "You are not a valid user for shelter #{Shelter.find(params[:shelter_id]).name}"
       @shelters = Shelter.all
@@ -65,7 +70,7 @@ post '/session' do
     else
       session[:user_id] = user.id
       session[:shelter_id] = params[:shelter_id]
-      erb :landing
+      redirect '/index'
     end
   else
     @message = 'Incorrect email or password'
@@ -73,6 +78,16 @@ post '/session' do
     erb :login #not redirect as want to keep variables
   end
 
+end
+
+put '/session_change' do
+  session[:shelter_id] = params[:shelter_id]
+  # binding.pry
+  # request.path_info
+  redirect session[:previous_route]
+
+  # redirect '/animals'
+  # redirect "/#{request.referer}"
 end
 
 delete '/session' do
@@ -98,6 +113,7 @@ end
 get '/return_animal/:id' do
   animal = Animal.find(params[:id] )
   animal.client_id = nil
+  animal.shelter_id = session[:shelter_id]
   animal.save
   redirect '/clients'
 end
@@ -107,32 +123,35 @@ end
 # end
 
 get '/animals_maintenance' do
-  @animals = Animal.all
+  # @animals = Animal.all
+  @animals = Animal.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
   @shelters = Shelter.all
 
   erb :'animals/maintenance'
 end
 
 get '/clients_maintenance' do
-  @clients = Client.all
+  # @clients = Client.all
+  @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+
   @shelters = Shelter.all
 
   erb :'clients/maintenance'
 end
 
 get '/users_maintenance' do
-  @users = User.all
+  @users = User.all.order("name ASC" )
   erb :"users/maintenance"
 end
 
 get '/shelters_maintenance' do
-  @shelters = Shelter.all
+  @shelters = Shelter.all.order("name ASC" )
   erb :"shelters/maintenance"
 end
 
 get '/user_access_maintenance' do
 
-  @users_access = User_shelter.all
+  @users_access = UserShelter.all
   # @users = Users.all
   erb :"user_access/maintenance"
 end

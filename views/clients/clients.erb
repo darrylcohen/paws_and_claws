@@ -6,7 +6,7 @@
     <!-- <li> -->
       <div class="display_item">
         <p class="display_item_name"><%= client.name %> </p>
-        <img src="<%= client.pic_image %> " alt="">
+        <img class="display_item_img" src="<%= client.pic_image %> " alt="">
         <p class="display_item_name"><%= "Phone: #{client.phone}, <br>Email: #{client.email}" %> </p>
         <nav>
           <!-- <p class="display_item_name">Pets -->
@@ -20,11 +20,16 @@
               <div class="display_item">
                 <p class="display_item_name_small"><%= pet.name %></p>
                 <img class="img_small" src="<%= pet.pic_image %>" alt="">
-                <nav>
+                <div class="return">
                   <a href="/return_animal/<%= pet.id %>">Return</a>
-                </nav>
+                </div>
               </div>
             <% end %>
+          <% else %>
+            <div class="display_no_pet">
+              <img  src="https://baggybulldogs.files.wordpress.com/2012/08/adopt-a-pet.jpg" alt="">
+            </div>
+
           <% end %>
         </div>
       </div>

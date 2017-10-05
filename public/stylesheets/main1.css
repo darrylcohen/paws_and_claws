@@ -2,6 +2,12 @@ body {
     /*background-image: url("http://www.thepetshelter.org/uploads/4/0/9/4/40943689/pawspet-38kb.jpg");
     background-repeat: no-repeat;*/
     box-sizing: border-box;
+    background-color: #E3E3E0;
+    font-family: 'Roboto', sans-serif;
+}
+.main_img {
+  text-align: center;
+  margin: 0 auto;
 }
 header {
   display: flex;
@@ -21,20 +27,37 @@ header img {
 .image_flip {
   transform: scaleX(-1);
 }
-.logBTNS {
-  display: flex;
-  justify-content: center;
+.log_details {
   padding-bottom:1em;
+  text-align: center;
+}
+.log_details p {
+  font-size:2em;
+  margin: 0.5em;
 }
 button {
   font-size:100%;
-  border-radius: 20%;
-  margin-left: 0.5em;
+  border-radius: 10%;
+  margin-right: 0.5em;
 }
-
-.col_left img {
-  width:200px;
-  height:200px;
+.shelters {
+  /*display:flex;*/
+  width: 25%;
+  margin: 0 auto;
+  margin-top: 0.5em;
+  display:inline-block;
+  /*font-size: 2em;*/
+}
+.shelters select {
+  font-size: 1em;
+}
+.shelters p {
+  display:inline-block;
+  color: white;
+  font-size: 1.4em;
+}
+.shelters button {
+  display:inline-block;
 }
 nav {
   text-align:center;
@@ -53,9 +76,7 @@ nav a:hover {
   background-color: white;
   color: black;
 }
-header a {
 
-}
 /*.login {
   background-color: black;
   text-align: center;
@@ -67,29 +88,26 @@ header a {
 }*/
 .formContainer {
   width:30%;
-  margin: 0 auto;
-  border:2px solid black;
-  margin-top: 2em;
+  margin: 2em auto;
+  border:8px solid black;
+  background-color: white;
 
-  /*text-align:center;*/
 }
-.formContainer input, select {
+.formContainer input, .formContainer textarea{
   width: 100%;
   margin-top: 1em;
+  border:1px solid black;
 
 }
 .formContainer h1 {
   text-align: center;
 }
-/*.loginForm {
-  border:1px solid red;
-  margin: 0 auto;
 
-}*/
 .formDetails  {
   /*margin:1em;*/
   font-size: 120%;
   margin: 1em;
+
 }
 .formDetails select, input, textarea{
   font-size: 100%;
@@ -107,19 +125,25 @@ header a {
   flex-wrap: wrap;
   justify-content: center;
 }
-/*.display_item_big {
-  width: 45%;
-  border:1px solid green;
-  text-align:center;
-  margin:1em;
-}*/
+
 .display_item {
   width: 25%;
   border:2px solid black;
   text-align:center;
   margin:1em;
   padding:1em;
+  background-color: white;
 }
+/*.display_item_small {
+  width: 30%;
+  border:20px solid black;
+  text-align:center;
+  margin:1em;
+  padding:1em;
+  background-color: white;
+
+}*/
+
 .display_item a {
   text-decoration: none;
   font-size:120%;
@@ -127,8 +151,12 @@ header a {
   margin-left: 1em;
 }
 .display_item img{
-  width:100%;
+  width:90%;
   height:15em;
+}
+.display_no_pet img{
+  width: 90%;
+  height: 15em;
 }
 .display_item .img_small{
   width:100%;
@@ -142,10 +170,20 @@ header a {
 
 }
 .display_item_name_small {
-  font-size: 120%;
+  font-size: 100%;
   font-weight: bold;
-
-
+  margin: 0.2em;
+}
+.return {
+  background-color: black;
+  padding: 0.2em;
+}
+.return a {
+  margin-left: 0.1em;
+  text-decoration: none;
+  font-size:120%;
+  font-weight: bold;
+  color: white;
 }
 .crud_btns {
   display: flex;
@@ -160,7 +198,7 @@ header a {
   font-size:120%;
   font-weight:bold;
 }
-.item_row_container {
+/*.item_row_container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -168,7 +206,7 @@ header a {
 .item_row_buttons {
   display: flex;
 
-}
+}*/
 li img {
   width:50px;
   height: 50px;
@@ -176,7 +214,7 @@ li img {
 li {
   list-style-type: none;
 }
-.mid_container {
+/*.mid_container {
   display:flex;
   justify-content: space-between;
 }
@@ -187,7 +225,7 @@ li {
 .col_right {
   width: 50%;
   border: 3px solid blue;
-}
+}*/
 
 /*Drop Down*/
 /*.dropbtn {
@@ -229,7 +267,11 @@ li {
     display: block;
 }
 
-/*.dropdown:hover .dropbtn {
-
-    background-color: white: ;
-}*/
+footer {
+	background-color: black;
+	color: white;
+	width: 100%;
+	padding:10px 0;
+	text-align: center;
+  font-size: 1.3em;
+}

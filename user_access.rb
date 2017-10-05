@@ -6,7 +6,7 @@ get '/user_access/new' do
 end
 
 post '/user_access' do
-  user_access = User_shelter.new
+  user_access = UserShelter.new
   user_access.shelter_id = params[:shelter_id]
   user_access.user_id = params[:user_id]
   if user_access_unique? user_access.shelter_id, user_access.user_id
@@ -16,12 +16,12 @@ post '/user_access' do
   end
   # @users = User.all
   # @shelters = Shelter.all
-  @users_access = User_shelter.all
+  @users_access = UserShelter.all
   @users = User.all
   @shelters = Shelter.all
 
   # erb :"user_access/maintenance"
-  erb :"user_access/new"
+  redirect "/user_access_maintenance"
 
 end
 
@@ -34,25 +34,25 @@ end
 
 #Update Edit
 get '/user_access/:id/edit' do
-  @user_access = User_shelter.find(params[:id])
+  @user_access = UserShelter.find(params[:id])
   @user = User.find(@user_access.user_id)
   @shelters = Shelter.all
   erb :"user_access/edit"
 end
 
 put '/user_access/:id' do
-  user_access = User_shelter.find(params[:id])
-
+  user_access = UserShelter.find(params[:id])
   user_access.shelter_id = params[:shelter_id]
   user_access.user_id = params[:user_id]
 
   if user_access_unique? user_access.shelter_id, user_access.user_id
     user_access.save
-      @users_access = User_shelter.all
+      @users_access = UserShelter.all
     redirect '/user_access_maintenance'
   else
-    @message = "User #{User.find(user_id).name} already has access to Shelter #{Shelter.find(shelter_id).name}"
-    @users = User.all
+    @message = "User already has access to Shelter "
+    @user_access = UserShelter.find(params[:id])
+    @user = User.find(@user_access.user_id)
     @shelters = Shelter.all
     erb :"user_access/edit"
 
@@ -63,7 +63,7 @@ end
 
 #DELETE
 delete '/user_access/:id' do
-  user_access = User_shelter.find(params[:id])
+  user_access = UserShelter.find(params[:id])
   user_access.destroy
   redirect '/user_access_maintenance'
 end
