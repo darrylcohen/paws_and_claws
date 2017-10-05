@@ -1,6 +1,6 @@
 get '/clients' do
   # @clients = Client.all
-  @clients = Client.where("shelter_id = ?",  session[:shelter_id] )
+  @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
   if @clients.empty?
     @message = 'No Clients to Display'
   end
@@ -11,7 +11,7 @@ end
 
 #New
 get '/client/new' do
-  @shelters = Shelter.all
+  @shelters = Shelter.all.order("name ASC" )
   erb :'clients/new'
 end
 

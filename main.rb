@@ -55,7 +55,7 @@ get '/' do
 end
 
 get '/login' do
-  @shelters = Shelter.all
+  @shelters = Shelter.all.order("name ASC" )
   erb :login
 end
 
@@ -132,7 +132,8 @@ end
 
 get '/animals_maintenance' do
   # @animals = Animal.all
-  @animals = Animal.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+  # @animals = Animal.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+  @animals = Animal.where("shelter_id = ? AND client_id is null",  session[:shelter_id]).order("name ASC" )
   @shelters = Shelter.all
   store_route '/animals_maintenance'
   erb :'animals/maintenance'
