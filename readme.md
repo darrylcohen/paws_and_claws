@@ -1,5 +1,8 @@
 
 # PAWS & CLAWS
+### **Welcome to _DOTs and Boxes_**
+
+<img src=https://ibin.co/3cmzkKHF72pf.jpg width="300">
 
 Paws and Claws is an app designed to be used in house by the staff who work in the Shelters across Australia. The purpose of the app is to allow clients to adopt animals and return animal
 
