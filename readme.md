@@ -6,6 +6,9 @@ Paws and Claws is an app designed to be used in house by the staff who work in t
 #### View Paws & Claws
 https://stark-spire-24013.herokuapp.com
 
+#### Design
+[ERD and Wire Frames](https://github.com/darrylcohen/paws_and_claws/blob/master/Sheters.pdf)
+
 #### Users
 There are 2 types of users
 1. Normal access
