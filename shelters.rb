@@ -39,7 +39,6 @@ end
 #DELETE
 delete '/shelter/:id' do
   shelter = Shelter.find(params[:id])
-  binding.pry
   shelter.destroy
   # redirect 'shelters_maintenance'
   if !shelter.errors.full_messages.empty?
