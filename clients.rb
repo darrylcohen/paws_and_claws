@@ -4,7 +4,7 @@ get '/clients' do
   if @clients.empty?
     @message = 'No Clients to Display'
   end
-  session[:previous_route] = '/clients'
+  store_route '/clients'
 
   erb :'clients/clients'
 end

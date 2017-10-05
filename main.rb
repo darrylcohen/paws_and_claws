@@ -1,3 +1,7 @@
+# pg_dump -Fc --no-acl --no-owner -h localhost -U darrylcohen pawsclaws_db > db.dump
+# https://github.com/darrylcohen/paws_and_claws/raw/master/db.dump
+# heroku pg:backups:restore 'https://github.com/darrylcohen/paws_and_claws/raw/master/db.dump' DATABASE_URL
+
 
 require 'sinatra'
 # require 'sinatra/reloader'
@@ -35,6 +39,10 @@ helpers do
 
   def admin?
     User.find(session[:user_id]).admin == 'true'
+  end
+
+  def store_route route
+    session[:previous_route] = route
   end
 end
 
@@ -126,7 +134,7 @@ get '/animals_maintenance' do
   # @animals = Animal.all
   @animals = Animal.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
   @shelters = Shelter.all
-
+  store_route '/animals_maintenance'
   erb :'animals/maintenance'
 end
 
@@ -135,17 +143,20 @@ get '/clients_maintenance' do
   @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
 
   @shelters = Shelter.all
-
+  store_route '/clients_maintenance'
+# 'sdfsdfsdfsdfsdf'
   erb :'clients/maintenance'
 end
 
 get '/users_maintenance' do
   @users = User.all.order("name ASC" )
+  store_route '/users_maintenance'
   erb :"users/maintenance"
 end
 
 get '/shelters_maintenance' do
   @shelters = Shelter.all.order("name ASC" )
+  store_route '/shelters_maintenance'
   erb :"shelters/maintenance"
 end
 

@@ -5,7 +5,7 @@ get '/animals' do
   if @animals.empty?
     @message = 'No Animals to Display'
   end
-  session[:previous_route] = '/animals'
+  store_route '/animals'
   erb :'animals/animals'
 end
 
