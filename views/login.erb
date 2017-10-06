@@ -2,17 +2,21 @@
   <form class="" action="/session" method="post">
     <div class="formDetails"
       <label for="email">Email</label>
-      <input type="text" name="email" value="">
+      <input type="text" name="email" value="dabc">
     </div>
     <div class="formDetails"
       <label for="password">Password</label>
-      <input type="password" name="password" value="">
+      <input type="password" name="password" value="darryl">
     </div>
     <div class="formDetails">
       <label for="shelter">Shelter</label>
       <select  name="shelter_id">
         <% @shelters.each do |shelter| %>
-          <option value=" <%= shelter.id %> "><%= shelter.name %></option>
+          <% if shelter.name == "Melbourne" %>
+            <option value=" <%= shelter.id %> " selected><%= shelter.name %></option>
+          <% else %>
+            <option value=" <%= shelter.id %> "><%= shelter.name %></option>
+          <% end %>
         <% end %>
       </select>
     </div>
