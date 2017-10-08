@@ -14,7 +14,7 @@ https://stark-spire-24013.herokuapp.com
 
 
 #### Using the app
-1. Logon as Admin: Email = 'dabc', password = 'darryl, branch = 'Melbourne'
+1. Logon as Admin: Email = 'dabc', password = 'darryl', branch = 'Melbourne'
 
 ### What I learnt
 1. I got a lot of experience how to write the same functionality 10000000 times and then when adding something have to change 10000000 times

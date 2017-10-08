@@ -194,11 +194,16 @@ nav a:hover {
 }
 .maintenance_heading {
   text-align: center;
+  padding-top:1em;
 }
 .maintenance_heading p {
   color: red;
   font-size:180%;
   font-weight:bold;
+}
+.maintenance_heading a {
+  color:black;
+  font-size: 150%;
 }
 /*.item_row_container {
   display: flex;
