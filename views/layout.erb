@@ -31,18 +31,8 @@
     <% if logged_in? %>
       <a href="/animals">Display Animals</a>
       <a href="/clients">Display Clients</a>
-      <% if logged_in? && admin? %>
-        <div class="dropdown">
-          <a href="#" class="dsropbtn">Maintenance &#9660</a>
-          <div class="dropdown-content">
-            <a href="/animals_maintenance">Animals</a>
-            <a href="/clients_maintenance">Clients</a>
-            <a href="/shelters_maintenance">Shelters</a>
-            <a href="/users_maintenance">Users</a>
-            <a href="/user_access_maintenance">User Access</a>
-          </div>
-        </div>
-        <!-- <div class="shelters">
+      <% if logged_in? %>
+        <div class="shelters">
           <form class="" action="/session_change" method="post">
             <input type="hidden" name="_method" value="put">
             <p> Shelter </p>
@@ -57,7 +47,7 @@
             </select>
             <button type="submit" name="button">Submit</button>
           </form>
-        </div> -->
+        </div>
 
       <% end %>
     <% end %>

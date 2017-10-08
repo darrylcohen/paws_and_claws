@@ -1,11 +1,5 @@
 get '/animals' do
-  # @animals = Animal.all
-  # @animals = Animal.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
-  if admin?
-    @animals = Animal.all.order("name ASC" )
-  else
-    @animals = Animal.where("shelter_id = ? AND client_id is null",  session[:shelter_id]).order("name ASC" )
-  end
+  @animals = Animal.where("shelter_id = ? AND client_id is null",  session[:shelter_id]).order("name ASC" )
 
   if @animals.empty?
     @message = 'No Animals to Display'
@@ -55,7 +49,7 @@ put '/animal/:id' do
   animal.shelter_id = params[:shelter_id]
   animal.save
 
-  redirect '/animals_maintenance'
+  redirect '/animals'
 end
 
 #DELETE

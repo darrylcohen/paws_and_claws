@@ -1,11 +1,7 @@
 get '/clients' do
   # @clients = Client.all
-  if admin?
-    @clients = Client.all
-  else
-    @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
-  end
-  
+  @clients = Client.where("shelter_id = ?",  session[:shelter_id] ).order("name ASC" )
+
   if @clients.empty?
     @message = 'No Clients to Display'
   end
@@ -56,7 +52,7 @@ put '/client/:id' do
   client.email = params[:email]
   client.shelter_id = params[:shelter_id]
   client.save
-  redirect '/clients_maintenance'
+  redirect '/clients'
 end
 
 #DELETE

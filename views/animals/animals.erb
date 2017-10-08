@@ -11,6 +11,27 @@
         <p class="display_item_name"><%= animal.name %> </p>
         <img src="<%= animal.pic_image %> " alt="">
         <p class="display_item_name"><%= "Age: #{animal.age}, Species: #{animal.species}, #{Shelter.find(animal.shelter_id).name}" %> </p>
+        <% if @client_id != nil %>
+          <form class="" action="/adopt_an_animal" method="post">
+            <input type="hidden" name="animal_id" value="<%= animal.id %>">
+            <input type="hidden" name="client_id" value="<%= @client_id %>">
+            <button type="submit" >Adopt</button>
+          </form>
+        <% end %>
+        <% if logged_in? %>
+          <div class="crud_btns">
+            <form class="" action="/animal/<%= animal.id %>/edit" method="get">
+              <button type="submit" >Edit</button>
+            </form>
+            <form class="" action="/animal/<%= animal.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" >Delete</button>
+            </form>
+            <!-- <form class="" action="/animal/<%#= animal.id %>" method="get">
+              <button type="submit" >View</button>
+            </form> -->
+          </div>
+        <% end %>
       </div>
     <!-- <a href="/animal/<%= animal.id %>"><%= animal.name %> </a> </li> -->
   <!-- </li> -->
