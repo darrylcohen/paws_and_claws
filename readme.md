@@ -12,16 +12,9 @@ https://stark-spire-24013.herokuapp.com
 #### Design
 [ERD and Wire Frames](https://github.com/darrylcohen/paws_and_claws/blob/master/Sheters.pdf)
 
-#### Users
-There are 2 types of users
-1. Normal access
-   Staff can enter adoptions and returns but only for the shelter they have access to. EG, a person who works in                melbourne will only see the melbourne shelter
-2. Admin
-   Admin people can add new animals and clients and can do adoptions across Shelters
 
 #### Using the app
 1. Logon as Admin: Email = 'dabc', password = 'darryl, branch = 'Melbourne'
-2. Once logged on go to Maintenance > User Access and s
 
 ### What I learnt
 1. I got a lot of experience how to write the same functionality 10000000 times and then when adding something have to change 10000000 times
